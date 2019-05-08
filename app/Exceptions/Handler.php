@@ -59,11 +59,9 @@ class Handler extends ExceptionHandler
                 $exception->getStatus()
             );
         } else if ($exception instanceof ValidationException) {
-            Log::debug(1);
-            $error = array_values($exception->errors())[0];
-            if (is_array($error)) {
-                $error = $error[0];
-            }
+
+            $error = $exception->validator->errors()->first();
+
             // 如果错误是字符串则使用默认返回体
             if (is_string($error)) {
                 return Result::error(

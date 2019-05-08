@@ -3,8 +3,11 @@
 namespace App\Providers;
 
 use Exception;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
+use Nwidart\Modules\Facades\Module;
 
 class ImplementServiceProvider extends ServiceProvider
 {
@@ -17,24 +20,17 @@ class ImplementServiceProvider extends ServiceProvider
     public function register()
     {
         $implements = [];
-        // 发现 Service Interface 默认实现
-        $implements = array_merge(
-            $implements,
-            $this->findImplements(
-                __DIR__ . '/../Services/Interfaces',
-                'App\\Services\\Interfaces',
-                'App\\Services'
-            )
-        );
-        // 发现 Dao Interface 默认实现
-        $implements = array_merge(
-            $implements,
-            $this->findImplements(
-                __DIR__ . '/../DAL/Interfaces',
-                'App\\DAL\\Interfaces',
-                'App\\DAL'
-            )
-        );
+
+        foreach (config('app.implementsMap', []) as $implement) {
+            $implements = array_merge(
+                $implements,
+                $this->findImplements(
+                    $implement['path'],
+                    "{$implement['namespace']}\\Interfaces",
+                    $implement['namespace']
+                )
+            );
+        }
 
         // 合并系统配置
         $implements = array_merge(

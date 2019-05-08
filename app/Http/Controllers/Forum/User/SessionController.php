@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\API\User;
+namespace App\Http\Controllers\Forum\User;
 
 use App\Libs\Result;
-use App\Services\Interfaces\IUserService;
+use App\Services\Forum\Interfaces\IUserService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -17,26 +17,6 @@ class SessionController extends Controller
     public function __construct(IUserService $userService)
     {
         $this->userService = $userService;
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -69,28 +49,6 @@ class SessionController extends Controller
                 'token' => $token
             ]
         );
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**

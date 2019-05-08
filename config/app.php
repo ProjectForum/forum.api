@@ -235,5 +235,15 @@ return [
     ],
 
     'implements' => [],
+    'implementsMap' => [
+        [
+            'path' => app_path('/Services/Forum/Interfaces'),
+            'namespace' => 'App\\Services\\Forum'
+        ],
+        [
+            'path' => app_path('/Repositories/Forum/Interfaces'),
+            'namespace' => 'App\\Repositories\\Forum'
+        ],
+    ],
 
 ];

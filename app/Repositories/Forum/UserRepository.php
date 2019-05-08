@@ -1,14 +1,14 @@
 <?php
 
 
-namespace App\DAL;
+namespace App\Repositories\Forum;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use App\DAL\Interfaces\IUserDao;
+use App\Repositories\Forum\Interfaces\IUserRepository;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
-class UserDao implements IUserDao
+class UserRepository implements IUserRepository
 {
     /**
      * 创建用户

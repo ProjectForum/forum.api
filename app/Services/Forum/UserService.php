@@ -1,26 +1,26 @@
 <?php
 
 
-namespace App\Services;
+namespace App\Services\Forum;
 
-use App\DAL\Interfaces\IUserDao;
+use App\Repositories\Forum\Interfaces\IUserRepository;
 use App\Exceptions\ResultException;
 use App\Libs\Result;
 use App\Models\User;
-use App\Services\Interfaces\IUserService;
+use App\Services\Forum\Interfaces\IUserService;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 
 class UserService implements IUserService
 {
     /**
-     * @var IUserDao
+     * @var IUserRepository
      */
-    protected $userDao;
+    protected $userRepository;
 
-    public function __construct(IUserDao $userDao)
+    public function __construct(IUserRepository $userRepository)
     {
-        $this->userDao = $userDao;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -33,7 +33,7 @@ class UserService implements IUserService
      */
     public function register(string $name, string $email, string $password): User
     {
-        return $this->userDao->createUser($name, $email, $password);
+        return $this->userRepository->createUser($name, $email, $password);
     }
 
     /**
@@ -47,7 +47,7 @@ class UserService implements IUserService
     public function createSessionToken(string $email, string $password): string
     {
         if (auth()->guest()) {
-            $user = $this->userDao->findByEmail($email);
+            $user = $this->userRepository->findByEmail($email);
             if (empty($user)) {
                 throw new ResultException('用户不存在', Result::USER_NOT_FOUND, Response::HTTP_UNAUTHORIZED);
             }
@@ -58,6 +58,6 @@ class UserService implements IUserService
             $user = auth()->user();
         }
 
-        return $this->userDao->generateToken($user);
+        return $this->userRepository->generateToken($user);
     }
 }

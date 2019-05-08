@@ -1,11 +1,11 @@
 <?php
 
 
-namespace App\DAL\Interfaces;
+namespace App\Repositories\Forum\Interfaces;
 
 use App\Models\User;
 
-interface IUserDao
+interface IUserRepository
 {
     public function createUser(string $name, string $email, string $password): User;
 
