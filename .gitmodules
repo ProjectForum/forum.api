@@ -1,0 +1,3 @@
+[submodule "front/admin"]
+	path = front/admin
+	url = git@github.com:ProjectForum/forum.admin.git
