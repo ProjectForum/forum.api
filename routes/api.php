@@ -24,6 +24,10 @@ Route::middleware('auth:api')->group(function (Router $router) {
     $router->namespace('Forum\Forum')->group(function (Router $router) {
         $router->resource('board', 'BoardController');
         $router->resource('board/{boardId}/topic', 'TopicController');
-
     });
+});
+
+Route::namespace('Installation')->prefix('/installation')->group(function (Router $router) {
+    $router->resource('config', 'ConfigController');
+    $router->resource('database', 'DatabaseController');
 });

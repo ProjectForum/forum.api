@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Config\Custom;
+namespace Config\User;
 
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
-class CustomConfig
+class UserConfig
 {
     /**
      * 配置项
@@ -17,7 +17,7 @@ class CustomConfig
 
     /**
      * 当前类的实例
-     * @var CustomConfig
+     * @var UserConfig
      */
     protected static $instance = null;
 
@@ -29,12 +29,12 @@ class CustomConfig
 
     /**
      * 获取当前类的实例
-     * @return CustomConfig
+     * @return UserConfig
      */
-    public static function getInstance(): CustomConfig
+    public static function getInstance(): UserConfig
     {
         if (empty(self::$instance)) {
-            self::$instance = new CustomConfig();
+            self::$instance = new UserConfig();
         }
         return self::$instance;
     }

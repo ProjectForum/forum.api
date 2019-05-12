@@ -1,6 +1,6 @@
 <?php
 
-use \Config\Custom\CustomConfig;
+use \Config\User\UserConfig;
 
 return [
 
@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => CustomConfig::get('app.name', 'Forum'),
+    'name' => UserConfig::get('app.name', 'Forum'),
 
     /*
     |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', CustomConfig::get('app.env', 'production')),
+    'env' => env('APP_ENV', UserConfig::get('app.env', 'production')),
 
     /*
     |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', CustomConfig::get('app.debug', false)),
+    'debug' => env('APP_DEBUG', UserConfig::get('app.debug', false)),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'url' => CustomConfig::get('app.url', 'http://localhost'),
+    'url' => UserConfig::get('app.url', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL', null),
 
@@ -121,7 +121,7 @@ return [
     |
     */
 
-    'key' => CustomConfig::get('app.key'),
+    'key' => UserConfig::get('app.key'),
 
     'cipher' => 'AES-256-CBC',
 

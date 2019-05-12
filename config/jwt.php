@@ -1,6 +1,6 @@
 <?php
 
-use \Config\Custom\CustomConfig;
+use \Config\User\UserConfig;
 
 /*
  * This file is part of jwt-auth.
@@ -27,7 +27,7 @@ return [
     |
     */
 
-    'secret' => CustomConfig::get('jwt.secret'),
+    'secret' => UserConfig::get('jwt.secret'),
 
     /*
     |--------------------------------------------------------------------------

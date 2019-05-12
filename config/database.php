@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Str;
-use \Config\Custom\CustomConfig;
+use \Config\User\UserConfig;
 
 return [
 
@@ -45,12 +45,12 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => CustomConfig::get('db.host', '127.0.0.1'),
-            'port' => CustomConfig::get('db.port', '3306'),
-            'database' => CustomConfig::get('db.database', 'forge'),
-            'username' => CustomConfig::get('db.username', 'forge'),
-            'password' => CustomConfig::get('db.password', ''),
-            'unix_socket' => CustomConfig::get('db.socket', ''),
+            'host' => UserConfig::get('db.host', '127.0.0.1'),
+            'port' => UserConfig::get('db.port', '3306'),
+            'database' => UserConfig::get('db.database', 'forge'),
+            'username' => UserConfig::get('db.username', 'forge'),
+            'password' => UserConfig::get('db.password', ''),
+            'unix_socket' => UserConfig::get('db.socket', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
@@ -116,7 +116,7 @@ return [
 
     'redis' => [
 
-        'client' => CustomConfig::get('redis.client', 'predis'),
+        'client' => UserConfig::get('redis.client', 'predis'),
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'predis'),
@@ -124,17 +124,17 @@ return [
         ],
 
         'default' => [
-            'host' =>  CustomConfig::get('redis.host', '127.0.0.1'),
-            'password' => CustomConfig::get('redis.password', null),
-            'port' => CustomConfig::get('redis.port', 6379),
-            'database' => CustomConfig::get('redis.db', 0),
+            'host' =>  UserConfig::get('redis.host', '127.0.0.1'),
+            'password' => UserConfig::get('redis.password', null),
+            'port' => UserConfig::get('redis.port', 6379),
+            'database' => UserConfig::get('redis.db', 0),
         ],
 
         'cache' => [
-            'host' =>  CustomConfig::get('redis.host', '127.0.0.1'),
-            'password' => CustomConfig::get('redis.password', null),
-            'port' => CustomConfig::get('redis.port', 6379),
-            'database' => CustomConfig::get('redis.cacheDb', 1),
+            'host' =>  UserConfig::get('redis.host', '127.0.0.1'),
+            'password' => UserConfig::get('redis.password', null),
+            'port' => UserConfig::get('redis.port', 6379),
+            'database' => UserConfig::get('redis.cacheDb', 1),
         ],
 
     ],

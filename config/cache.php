@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Str;
-use \Config\Custom\CustomConfig;
+use \Config\User\UserConfig;
 
 return [
 
@@ -19,7 +19,7 @@ return [
     |
     */
 
-    'default' => CustomConfig::get('cache.driver', 'file'),
+    'default' => UserConfig::get('cache.driver', 'file'),
 
     /*
     |--------------------------------------------------------------------------
@@ -98,6 +98,6 @@ return [
     |
     */
 
-    'prefix' => CustomConfig::get('cache.prefix', Str::slug(CustomConfig::get('app.name', 'forum'), '_') . '_cache'),
+    'prefix' => UserConfig::get('cache.prefix', Str::slug(UserConfig::get('app.name', 'forum'), '_') . '_cache'),
 
 ];
