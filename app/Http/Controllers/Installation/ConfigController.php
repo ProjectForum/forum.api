@@ -30,6 +30,12 @@ class ConfigController extends Controller
         $config = $request->only([
             'appName',
             'appUrl',
+            'dbHost',
+            'dbPort',
+            'dbDatabase',
+            'dbUsername',
+            'dbPassword',
+            'dbPrefix',
         ]);
 
         $installService->createConfig($config);

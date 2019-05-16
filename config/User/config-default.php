@@ -12,6 +12,7 @@ return [
         'database' => '',
         'username' => '',
         'password' => '',
+        'prefix' => 'forum_',
         'socket' => '',
     ],
     'redis' => [

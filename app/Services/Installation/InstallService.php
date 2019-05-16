@@ -25,6 +25,7 @@ class InstallService
         $userConfig->setValue('db.database', $config['dbDatabase']);
         $userConfig->setValue('db.username', $config['dbUsername']);
         $userConfig->setValue('db.password', $config['dbPassword']);
+        $userConfig->setValue('db.prefix', $config['dbPrefix']);
 
         $userConfig->save();
 

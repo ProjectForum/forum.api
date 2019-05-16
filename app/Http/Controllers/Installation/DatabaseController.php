@@ -22,6 +22,7 @@ class DatabaseController extends Controller
         }
 
         $commandOutput = $installService->migrateTables();
+        $commandOutput .= "\n";
         $commandOutput .= $installService->seedDatabase();
         $installService->createLock();
 
