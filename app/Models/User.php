@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Str;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 /**
@@ -14,10 +15,11 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @property string $name 用户名
  * @property string $email 电子邮箱
  * @property string $password 密码
+ * @property string $adminRoleId 管理员角色ID
  */
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable;
+    use Notifiable, CamelModel;
 
     /**
      * The attributes that are mass assignable.

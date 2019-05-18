@@ -52,6 +52,7 @@ class Result
     const REQUEST_FIELD_VALIDATION_FAIL = 1002; // 请求字段验证失败
     const RESOURCE_NOT_FOUND = 1003; // 资源不存在
     const DATABASE_QUERY_FAILED = 1004; // 数据库查询失败
+    const CANNOT_REINSTALL = 1005; // 无法重复安装
     const USER_UNAUTHORIZED = 2001; // 用户JWT鉴权失败
     const USER_NOT_FOUND = 2002; // 没有找到该用户
     const USER_PASSWORD_ERROR = 2003; // 用户密码错误

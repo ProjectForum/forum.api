@@ -4,9 +4,11 @@
 namespace App\Services\Installation;
 
 
+use App\Models\User;
 use Config\User\UserConfig;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Hash;
 use phpDocumentor\Reflection\Types\Boolean;
 
 class InstallService
@@ -34,14 +36,29 @@ class InstallService
 
     public function migrateTables()
     {
+        $output = '';
+        Artisan::call('migrate:reset');
+        $output .= Artisan::output();
+
         Artisan::call('migrate');
-        return Artisan::output();
+        $output .= Artisan::output();
+        return $output;
     }
 
     public function seedDatabase()
     {
         Artisan::call('db:seed');
         return Artisan::output();
+    }
+
+    public function initSetting(array $settings)
+    {
+        $user = new User;
+        $user->name = $settings['username'];
+        $user->email = $settings['email'];
+        $user->password = Hash::make($settings['password']);
+        $user->adminRoleId = 1;
+        $user->save();
     }
 
     /**

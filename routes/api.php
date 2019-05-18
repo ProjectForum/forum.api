@@ -17,17 +17,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->group(function (Router $router) {
     $router->namespace('Forum\User')->group(function (Router $router) {
-        $router->resource('user', 'UserController');
-        $router->resource('session', 'SessionController');
+        $router->apiResource('user', 'UserController');
+        $router->apiResource('session', 'SessionController');
     });
 
     $router->namespace('Forum\Forum')->group(function (Router $router) {
-        $router->resource('board', 'BoardController');
-        $router->resource('board/{boardId}/topic', 'TopicController');
+        $router->apiResource('board', 'BoardController');
+        $router->apiResource('board/{boardId}/topic', 'TopicController');
     });
 });
 
-Route::namespace('Installation')->prefix('/installation')->group(function (Router $router) {
-    $router->resource('config', 'ConfigController');
-    $router->resource('database', 'DatabaseController');
+// 程序安装
+Route::middleware('installation')->namespace('Installation')->prefix('/installation')->group(function (Router $router) {
+    $router->apiResource('config', 'ConfigController');
+    $router->apiResource('database', 'DatabaseController');
+    $router->apiResource('setting', 'SettingController');
 });

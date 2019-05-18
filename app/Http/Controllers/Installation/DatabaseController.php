@@ -14,19 +14,10 @@ class DatabaseController extends Controller
 
     public function store(InstallService $installService)
     {
-        if ($installService->hasLock()) {
-            return Result::error(
-                Result::REQUEST_FIELD_VALIDATION_FAIL,
-                '系统已初始化，无法再次初始化',
-                Response::HTTP_BAD_REQUEST
-            );
-        }
-
         try {
             $commandOutput = $installService->migrateTables();
             $commandOutput .= "\n";
             $commandOutput .= $installService->seedDatabase();
-//            $installService->createLock();
         } catch (QueryException $e) {
             return Result::error(
                 Result::DATABASE_QUERY_FAILED,

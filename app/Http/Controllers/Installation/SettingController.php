@@ -6,11 +6,11 @@ use App\Libs\Helper;
 use App\Libs\Result;
 use App\Services\Installation\InstallService;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
 
-class ConfigController extends Controller
+class SettingController extends Controller
 {
     /**
      * Store a newly created resource in storage.
@@ -22,22 +22,17 @@ class ConfigController extends Controller
      */
     public function store(Request $request, InstallService $installService)
     {
-        // 验证字段
         list($rules, $errors) = Helper::buildValidateRules([
-            'appName' => '应用名称',
-            'appUrl' => '站点地址',
-            'dbHost' => '数据库主机',
-            'dbPort' => '数据库端口',
-            'dbDatabase' => '数据库名',
-            'dbUsername' => '数据库用户名',
-            'dbPassword' => null,
-            'dbPrefix' => null,
+            'username' => '管理员用户名',
+            'email' => '管理员电子邮箱',
+            'password' => '管理员密码',
         ]);
 
-        $config = $this->validate($request, $rules, $errors);
+        $input = $this->validate($request, $rules, $errors);
 
-        $installService->createConfig($config);
+        $installService->initSetting($input);
+        $installService->createLock();
 
-        return Result::success('创建成功');
+        return Result::success('初始化成功');
     }
 }
