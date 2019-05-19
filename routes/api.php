@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->group(function (Router $router) {
     $router->namespace('Forum\User')->group(function (Router $router) {
         $router->apiResource('user', 'UserController');
-        $router->apiResource('session', 'SessionController');
+        $router->apiResource('/user/session', 'SessionController');
     });
 
     $router->namespace('Forum\Forum')->group(function (Router $router) {

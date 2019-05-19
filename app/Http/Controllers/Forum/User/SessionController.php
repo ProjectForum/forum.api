@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers\Forum\User;
 
+use App\Exceptions\ResultException;
 use App\Libs\Result;
 use App\Services\Forum\Interfaces\IUserService;
+use App\Services\Forum\UserService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
+use Illuminate\Validation\ValidationException;
 
 class SessionController extends Controller
 {
     /**
-     * @var IUserService
+     * @var UserService
      */
     protected $userService;
 
@@ -22,9 +26,10 @@ class SessionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Validation\ValidationException
+     * @param Request $request
+     * @return Response
+     * @throws ValidationException
+     * @throws ResultException
      */
     public function store(Request $request)
     {
@@ -54,9 +59,9 @@ class SessionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -67,7 +72,7 @@ class SessionController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {
